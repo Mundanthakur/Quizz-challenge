@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your earning begins from here</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      font-size: 20px; /* Default font size */
+    }
+
+    h1 {
+      font-size: 32px;
+      color: darkblue;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+      font-size: 22px;
+    }
+    input[type="radio"] {
+      transform: scale(1.5); /* Make radio buttons bigger */
+      margin-right: 10px;
+    }
+    input[type="submit"] {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin-top: 15px;
+    }
+    #result {
+      font-size: 22px;
+      margin-top: 20px;
+    }
+    #timer {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    button a {
+      font-size: 18px;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: inline-block;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<h1>What gets wetter the more it dries?</h1>
+<p id="timer" style="font-weight: bold; color: blue;">Time left: 30 seconds</p>
+<form id="quizForm">
+<label><input type="radio" name="color" value="A sponge">A sponge</label><br>
+<label><input type="radio" name="color" value="A towel">A towel </label><br>
+<label><input type="radio" name="color" value="Your secret">Your secret</label><br>
+<label><input type="radio" name="color" value="A wet dream">A wet dream</label><br>
+<input type="submit" value="Submit">
+</form>
+<div id="result" style="margin-top: 10px;"></div>
+<button><a href="sastakbc5.html">Move to next question</a></button>
+<script>
+// Timer Logic
+let timeLeft = 30;
+const timerElement = document.getElementById('timer');
+const countdown = setInterval(() => {
+timeLeft--;
+timerElement.textContent = `Time left: ${timeLeft} seconds`;
+if (timeLeft <= 0) {
+clearInterval(countdown);
+window.location.href = 'sastakbc5.html';
+}
+}, 1000);
+// Quiz Form Logic
+document.getElementById('quizForm').addEventListener('submit', function(event) {
+event.preventDefault();
+const options = document.getElementsByName('color');
+let selected = '';
+for (let i = 0; i < options.length; i++) {
+if (options[i].checked) {
+selected = options[i].value;
+break;
+}
+}
+const resultDiv = document.getElementById('result');
+if (selected === '') {
+resultDiv.textContent = 'Please select an option.';
+resultDiv.style.color = 'orange';
+} else if (selected === 'A towel') {
+resultDiv.textContent = 'Correct Answer!';
+resultDiv.style.color = 'green';
+} else {
+resultDiv.textContent = 'Wrong Answer!';
+resultDiv.style.color = 'red';
+}
+});
+</script>
+
+</body>
+</html>
